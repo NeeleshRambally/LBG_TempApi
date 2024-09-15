@@ -10,15 +10,12 @@ DATABASES = {
     }
 }
 
-# Disable CORS headers in testing
 CORS_ORIGIN_ALLOW_ALL = False
 
-# Use a simpler password hasher for faster tests
 PASSWORD_HASHERS = [
     'django.contrib.auth.hashers.MD5PasswordHasher',
 ]
 
-# Disable logging for tests
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': True,

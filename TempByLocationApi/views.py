@@ -61,7 +61,6 @@ def get_location_coordinates(request):
         logger.warning("No location parameter provided.")
         return JsonResponse({'error': 'Location parameter is required.'}, status=400)
 
-    # Use the service to fetch and save coordinates
     coordinates_result = LocationService.fetch_and_save_location_coordinates(location)
 
     if coordinates_result:
