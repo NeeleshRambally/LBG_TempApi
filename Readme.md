@@ -76,6 +76,7 @@ Before diving into the project, I spent a few minutes planning the overall appro
 - Defining the overall application architecture
 - To simplify development and avoid creating a separate PostgreSQL instance, I opted to use a Docker image of PostgreSQL for local connection. This allowed me to connect and persist data to the database while setting up the data layer. The application can be easily extended to connect to an external PostgreSQL database instance in the future.
 - My goal was to run the application with a single command, so I used Docker Compose to orchestrate both the database and the application startup. This approach ensures that the database is created, the required tables are initialized, and all migrations are run automatically when the application is started.
+- I automated the testing using GitHub Actions that run all the unit tests as described above
 
 ### Key Decisions
 - I chose 'https://open-meteo.com/' as the weather data provider because it offers a 7-day forecast (including high/low temperatures and probability of rain) for a given location.
