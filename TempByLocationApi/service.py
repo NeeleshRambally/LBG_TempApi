@@ -45,7 +45,6 @@ class LocationService:
                 'longitude': location_obj.longitude
             }
         except Location.DoesNotExist:
-            # If the location is not found in the database, proceed to fetch from API
             logger.info(f"Location not found in database. Fetching from API: {location_upper}")
 
         # Proceed with fetching from the API
@@ -69,7 +68,7 @@ class LocationService:
                     latitude = data[0]['lat']
                     longitude = data[0]['lon']
 
-                    # Save location to database with the name in uppercase
+                    # Save location to database with the name in uppercase to avoid duplication
                     location_obj, created = Location.objects.update_or_create(
                         name=location_upper,
                         defaults={'latitude': latitude, 'longitude': longitude}
@@ -118,12 +117,12 @@ class LocationService:
                 "daily": ["temperature_2m_max", "temperature_2m_min", "precipitation_sum"]
             }
 
+            ##TODO : Save this URL in the settings.py - for now just adding it here
             responses = openmeteo.weather_api(url="https://api.open-meteo.com/v1/forecast", params=params)
             response = responses[0]
 
             logger.debug(f"Weather API Response Data: {response}")
 
-            # Extract the weather data into a pandas DataFrame
             daily = response.Daily()
             daily_temperature_2m_max = daily.Variables(0).ValuesAsNumpy()
             daily_temperature_2m_min = daily.Variables(1).ValuesAsNumpy()

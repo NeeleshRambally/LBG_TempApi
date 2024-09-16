@@ -22,13 +22,11 @@ def get_location_weather(request):
         logger.warning("No location parameter provided.")
         return JsonResponse({'error': 'Location parameter is required.'}, status=400)
 
-    # Use the service to fetch and save coordinates
     coordinates_result = LocationService.fetch_and_save_location_coordinates(location)
 
     if coordinates_result:
         logger.info(f"Successfully retrieved and saved location: {location}")
 
-        # Fetch weather data using the coordinates
         weather_data = LocationService.get_weather_data(coordinates_result['latitude'], coordinates_result['longitude'])
 
         if weather_data:
