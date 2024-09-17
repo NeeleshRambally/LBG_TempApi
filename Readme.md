@@ -93,3 +93,5 @@ Before diving into the project, I spent a few minutes planning the overall appro
 ### Wishlist
 - Additional unit tests to cover more scenarios. Currently, only three test cases are included, but the test coverage could be significantly expanded.
 - Implement caching using Redis or another caching mechanism to improve performance.
+- Deployment to a platform such as AWS
+- More weather data provided to the front end
