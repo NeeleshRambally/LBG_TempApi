@@ -34,8 +34,9 @@ To build and run the application using Docker Compose:
 
 **docker-compose up --build**
 
-- Testing the api locally using POSTMAN or another API testing tool
-use URL : http://localhost:8000/api/get-weather/?location=Munich
+- Testing the api locally using POSTMAN or another API testing tool use 
+- URL : http://localhost:8000/api/get-weather/?location=Munich
+- HTTP : POST
 - you can enter any location as a query parameter 
 
 To stop the application:
